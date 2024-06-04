@@ -26,14 +26,7 @@ namespace Capa_Datos
             return dt;
         }
 
-        public DataTable D_listarusuarios()
-        {
-            SqlCommand cmd = new SqlCommand("sp_listar_usuarios", cn);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            return dt;
-        }
+       
 
         public DataTable D_buscarusuarios(ClassEntidad obje)
         {
