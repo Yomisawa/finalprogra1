@@ -152,7 +152,14 @@ namespace Capa_Datos
             da.Fill(dt);
             return dt;
         }
-        
+        public DataTable D_totalcursos()
+        {
+            SqlCommand cmd = new SqlCommand("sp_total_cursos", cn);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            return dt;
+        }
         public DataTable D_totalsalones()
         {
             SqlCommand cmd = new SqlCommand("sp_total_salon", cn);
