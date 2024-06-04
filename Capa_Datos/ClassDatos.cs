@@ -189,26 +189,7 @@ namespace Capa_Datos
             return dt;
         }
 
-        public String D_mantenimientoalumno(ClassEntidad obje)
-        {
-            String accion = "";
-            SqlCommand cmd = new SqlCommand("sp_mantenimiento_alumnos", cn);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@id_alumno", obje.id_alumno);
-            cmd.Parameters.AddWithValue("@nombre", obje.nombre);
-            cmd.Parameters.AddWithValue("@telefono", obje.telefono);
-            cmd.Parameters.AddWithValue("@matricula", obje.matricula);
-            cmd.Parameters.AddWithValue("@id_curso", obje.id_curso);
-            cmd.Parameters.AddWithValue("@id_salon", obje.id_salon);
-            cmd.Parameters.Add("@accion", SqlDbType.VarChar, 50).Value = obje.accion;
-            cmd.Parameters["@accion"].Direction = ParameterDirection.InputOutput;
-            if (cn.State == ConnectionState.Open) cn.Close();
-            cn.Open();
-            cmd.ExecuteNonQuery();
-            accion = cmd.Parameters["@accion"].Value.ToString();
-            cn.Close();
-            return accion;
-        }
+        
 
         public DataTable D_buscaralumnosXcurso(ClassEntidad obje)
         {
