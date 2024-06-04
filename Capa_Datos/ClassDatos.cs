@@ -126,7 +126,23 @@ namespace Capa_Datos
             return accion;
         }
 
-        
+        public String D_pass(ClassEntidad obje)
+        {
+            String accion = "";
+            SqlCommand cmd = new SqlCommand("sp_pass", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@id_codigo", obje.codigo);
+            cmd.Parameters.AddWithValue("@contraseña", obje.nombre);
+            cmd.Parameters.Add("@accion", SqlDbType.VarChar, 50).Value = obje.accion;
+            cmd.Parameters["@accion"].Direction = ParameterDirection.InputOutput;
+            if (cn.State == ConnectionState.Open) cn.Close();
+            cn.Open();
+            cmd.ExecuteNonQuery();
+            accion = cmd.Parameters["@accion"].Value.ToString();
+            cn.Close();
+            return accion;
+
+        }
 
         public DataTable D_totalalumnos()
         {
