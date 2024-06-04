@@ -220,6 +220,15 @@ namespace Capa_Datos
             da.Fill(dt);
             return dt;
         }
-       
+        public DataTable D_buscaralumnosXsalon(ClassEntidad obje)
+        {
+            SqlCommand cmd = new SqlCommand("sp_buscar_alumnos_salon", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@id_salon", obje.id_cod);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            return dt;
+        }
     }
 }
