@@ -178,16 +178,7 @@ namespace Capa_Datos
             return dt;
         }
 
-        public DataTable D_buscaralumnos(ClassEntidad obje)
-        {
-            SqlCommand cmd = new SqlCommand("sp_buscar_alumnos", cn);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@nombre", obje.nombre);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            return dt;
-        }
+        
 
         public String D_mantenimientoalumno(ClassEntidad obje)
         {
