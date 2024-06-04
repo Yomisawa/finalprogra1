@@ -55,24 +55,7 @@ namespace Capa_Datos
             return dt;
         }
 
-        public String D_mantenimientousuarios(ClassEntidad obje)
-        {
-            String accion = "";
-            SqlCommand cmd = new SqlCommand("sp_mantenimiento_usuario", cn);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@id_codigo", obje.codigo);
-            cmd.Parameters.AddWithValue("@nombre", obje.nombre);
-            cmd.Parameters.AddWithValue("@usuario", obje.usuario);
-            cmd.Parameters.AddWithValue("@id_tipo", obje.id_tipo);
-            cmd.Parameters.Add("@accion", SqlDbType.VarChar, 50).Value = obje.accion;
-            cmd.Parameters["@accion"].Direction = ParameterDirection.InputOutput;
-            if (cn.State == ConnectionState.Open) cn.Close();
-            cn.Open();
-            cmd.ExecuteNonQuery();
-            accion = cmd.Parameters["@accion"].Value.ToString();
-            cn.Close();
-            return accion;
-        }
+        
 
         public DataTable D_listacurso()
         {
