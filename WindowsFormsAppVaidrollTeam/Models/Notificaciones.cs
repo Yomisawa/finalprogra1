@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsAppVaidrollTeam.Models
 {
-    public  class Notificaciones
+    public class Notificaciones
     {
         public int id { get; set; }
         public string nombre { get; set; }
